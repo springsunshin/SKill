@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skill.dao.ItemOrderDao">
+
+
+    <insert id="insertOrder">
+        insert into item_order (itemid,userid,state,createTime,orderCode) values (#{itemid},#{userid},#{state},#{createTime},#{orderCode});
+    </insert>
+
+
+    <select id="getAllNotPaid" resultType="ItemOrder">
+        select * from item_order where state=1;
+    </select>
+
+    <update id="updateOrderTimeout">
+        update item_order set state=4 where orderCode=#{orderCode};
+    </update>
+</mapper>
